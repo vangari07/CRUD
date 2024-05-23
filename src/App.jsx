@@ -7,6 +7,9 @@ import {
   editUserData,
   getUserData,
 } from "./utils/apiFetching";
+import Demo from "./ToDo";
+import DigitalAnalog from "./DigitalAnalog";
+import FormComponent from "./FormComponent";
 
 const App = () => {
   const [userName, setUserName] = useState("");
@@ -59,7 +62,10 @@ const App = () => {
   return (
     <>
       <div className="w-full m-auto mb-10">
-        <h1 className="text-3xl font-bold text-center">User Management</h1>
+        <DigitalAnalog />
+        <FormComponent />
+
+        <h1 className="text-3xl font-bold text-center mt-32">User Details</h1>
         <UserInput
           setUserName={setUserName}
           setUserEmail={setUserEmail}
@@ -83,6 +89,7 @@ const App = () => {
             );
           })}
       </div>
+      <Demo />
     </>
   );
 };
