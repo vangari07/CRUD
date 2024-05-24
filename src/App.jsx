@@ -10,6 +10,7 @@ import {
 import Demo from "./ToDo";
 import DigitalAnalog from "./DigitalAnalog";
 import FormComponent from "./FormComponent";
+import Cursor from "./Cursor";
 
 const App = () => {
   const [userName, setUserName] = useState("");
@@ -22,7 +23,6 @@ const App = () => {
     const getUser = async () => {
       const data = await getUserData();
       setListData([...data]);
-      console.log("data", data);
     };
 
     getUser();
@@ -30,7 +30,6 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userName, userEmail, userRole);
     if (editId) {
       editUserData(editId, {
         name: userName,
@@ -61,7 +60,8 @@ const App = () => {
 
   return (
     <>
-      <div className="w-full m-auto mb-10">
+      <div className="w-full m-auto mb-10 overflow-hidden relative">
+        <Cursor />
         <DigitalAnalog />
         <FormComponent />
 
@@ -75,6 +75,7 @@ const App = () => {
           userRole={userRole}
           handleSubmit={handleSubmit}
         />
+        <UserCard />
       </div>
       <div className="flex flex-wrap gap-4 w-[1000px] m-auto">
         {listData &&
